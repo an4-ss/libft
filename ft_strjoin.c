@@ -6,46 +6,49 @@
 /*   By: arokhsi <arokhsi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 17:38:47 by arokhsi           #+#    #+#             */
-/*   Updated: 2024/11/11 18:22:25 by arokhsi          ###   ########.fr       */
+/*   Updated: 2024/11/23 20:56:10 by arokhsi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	get_length(const char *s)
+static	int	localstrlen(const char *str)
 {
-	if (s)
-	{
-		return (ft_strlen(s));
-	}
-	return (0);
-}
+	int	len;
 
-void	copy_string(const char *src, char *dest, size_t len)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < len)
-	{
-		dest[i] = src[i];
-		i++;
-	}
+	if (!str)
+		return (0);
+	len = 0;
+	while (str[len] != '\0')
+		len++;
+	return (len);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	s1_len;
-	size_t	s2_len;
-	char	*str;
+	int		len;
+	int		i;
+	char	*buffer;
 
-	s1_len = get_length(s1);
-	s2_len = get_length(s2);
-	str = malloc(sizeof(char) * (s1_len + s2_len + 1));
-	if (!str)
+	if (!s1 && !s2)
 		return (NULL);
-	copy_string(s1, str, s1_len);
-	copy_string(s2, str + s1_len, s2_len);
-	str[s1_len + s2_len] = '\0';
-	return (str);
+	len = localstrlen(s1) + localstrlen(s2);
+	buffer = malloc(len + 1);
+	if (!buffer)
+		return (NULL);
+	i = 0;
+	while (*s1)
+	{
+		buffer[i] = *s1;
+		i++;
+		s1++;
+	}
+	while (*s2)
+	{
+		buffer[i] = *s2;
+		i++;
+		s2++;
+	}
+	buffer[i] = '\0';
+	return (buffer);
 }

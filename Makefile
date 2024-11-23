@@ -7,23 +7,24 @@ SRCM = ft_strlcpy.c ft_toupper.c ft_atoi.c ft_memchr.c ft_strlen.c ft_isascii.c 
 		ft_substr.c ft_isprint.c ft_strlcat.c ft_tolower.c ft_itoa.c ft_putchar_fd.c \
 		ft_putstr_fd.c ft_putendl_fd.c \
 
-OBJM = $(SRCM:.c=.o)
+OBJS = $(SRCM:.c=.o)
+AR = ar
 NAME = libft.a
 
 all: $(NAME)
 
-$(NAME): $(OBJM) libft.h
-	ar -rc $(NAME) $(OBJM)
+$(NAME):$(OBJS)
+	$(AR) -rc $@ $^
+	
+%.o:%.c libft.h
+	$(CC) -c $(CFLAGS) $< -o $@
 
 clean:
-	rm -f $(OBJM)
+	rm -f $(OBJS)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
 
-walid: clean
-	@echo 'hello walid'
-
-.PHONY: 
+.PHONY: clean fclean re

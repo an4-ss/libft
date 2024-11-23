@@ -1,4 +1,16 @@
-# ifndef LIBFT_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arokhsi <arokhsi@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/22 00:11:59 by arokhsi           #+#    #+#             */
+/*   Updated: 2024/11/22 22:16:55 by arokhsi          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef LIBFT_H
 # define LIBFT_H
 
 # include <unistd.h>
@@ -37,7 +49,6 @@ char	**ft_split(char const *s, char c);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
-
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arokhsi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: arokhsi <arokhsi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:36:54 by arokhsi           #+#    #+#             */
-/*   Updated: 2024/11/08 15:26:25 by arokhsi          ###   ########.fr       */
+/*   Updated: 2024/11/23 17:32:05 by arokhsi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,18 @@ static char	*ft_fill(const char *s, char c)
 	return (buff);
 }
 
+static int	ft_check_and_free(char **s, int i)
+{
+	if (!s[i])
+	{
+		while (i >= 0)
+			free(s[--i]);
+		free(s);
+		return (1);
+	}
+	return (0);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	int		words;
@@ -66,7 +78,10 @@ char	**ft_split(char const *s, char c)
 	{
 		while (*s && *s == c)
 			s++;
-		buff[i++] = ft_fill(s, c);
+		buff[i] = ft_fill(s, c);
+		if (ft_check_and_free(buff, i))
+			return (NULL);
+		i++;
 		while (*s && *s != c)
 			s++;
 	}

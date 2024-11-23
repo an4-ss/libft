@@ -6,7 +6,7 @@
 /*   By: arokhsi <arokhsi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:31:23 by arokhsi           #+#    #+#             */
-/*   Updated: 2024/11/11 18:50:48 by arokhsi          ###   ########.fr       */
+/*   Updated: 2024/11/21 22:48:47 by arokhsi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,15 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 
 	if (!dst && !src)
 		return (NULL);
+	if (dst == src)
+		return (dst);
 	d = (unsigned char *)dst;
 	s = (unsigned char *)src;
 	i = 0;
 	if (d > s)
 	{
-		while (len > 0)
-		{
-			d[len - 1] = s[len - 1];
-			len--;
-		}
+		while (len-- > 0)
+			d[len] = s[len];
 	}
 	else
 	{
