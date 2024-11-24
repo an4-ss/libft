@@ -6,7 +6,7 @@
 /*   By: arokhsi <arokhsi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 13:39:47 by arokhsi           #+#    #+#             */
-/*   Updated: 2024/11/11 18:10:43 by arokhsi          ###   ########.fr       */
+/*   Updated: 2024/11/24 20:42:47 by arokhsi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,7 @@ char	*ft_strtrim(const char *s1, const char *set)
 	end = 0;
 	if (!s1 || !set)
 		return (NULL);
-	while (s1[end])
-		end++;
+	end = ft_strlen(s1);
 	while (s1[start] && in_set(s1[start], set))
 		start++;
 	while (end > start && in_set(s1[end - 1], set))

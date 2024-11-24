@@ -6,7 +6,7 @@
 /*   By: arokhsi <arokhsi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:36:54 by arokhsi           #+#    #+#             */
-/*   Updated: 2024/11/23 17:32:05 by arokhsi          ###   ########.fr       */
+/*   Updated: 2024/11/24 20:42:12 by arokhsi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	ft_check_and_free(char **s, int i)
 {
 	if (!s[i])
 	{
-		while (i >= 0)
+		while (i > 0)
 			free(s[--i]);
 		free(s);
 		return (1);
